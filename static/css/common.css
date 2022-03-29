@@ -1,0 +1,162 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.border {
+  border: 1px solid red;
+}
+
+.position {
+  position: relative;
+}
+
+.t-index {
+  text-indent: 24px;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.t-right {
+  text-align: right;
+}
+
+.m-top {
+  margin-top: 10px;
+}
+
+.m-top2 {
+  margin-top: 20px;
+}
+
+.f-bold {
+  font-weight: bold;
+}
+
+.p-left {
+  padding-left: 10px;
+}
+
+.p-left2 {
+  padding-left: 20px;
+}
+
+.p-right {
+  padding-right: 10px;
+}
+
+.p-top {
+  padding-top: 10px;
+}
+
+.p-top2 {
+  padding-top: 20px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+.c1 {
+  color: #1787fb;
+}
+
+.c2 {
+  color: #999;
+}
+
+.m-top3 {
+  margin-top: 30px;
+}
+
+
+
+
+
+
+/* 登录验证码获取 */
+.for_position {
+  position: relative;
+}
+
+.for_position .el-button {
+  position: absolute;
+  right: 0;
+  top: -40px;
+  padding: 12px 10px;
+
+}
+
+.for_position .el-button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  height: 20px;
+  width: 1px;
+  border-left: 1px solid #f3f3f3;
+}
+
+
+/* 企业资料上传logo */
+.logo_box .avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo_box .avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+
+.logo_box .avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+}
+
+.logo_box .avatar {
+  width: 120px;
+  height: 120px;
+  display: block;
+}
+
+
+/* 文字超出变点 */
+.t-ellipsis {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+/* 大型搜索框 */
+.search_box .el-input__inner {
+  height: 50px;
+  line-height: 50px;
+}
+
+.search_box .el-input-group__append,
+.search_box .el-input-group__prepend {
+  background-color: #49A4E2;
+}
+body,html{
+  width: 100%;
+  height: 100%;
+}
