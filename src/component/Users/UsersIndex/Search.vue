@@ -35,6 +35,19 @@ export default {
   methods: {
     KeySearch() {
       console.log(this.Search)
+      const ColorArr = ['Dd4357d', 'D8a8ba1', 'Decb332', 'D27b8bf', 'Dcba5dd', 'Dfb7f8f', 'Df1dae5']
+
+      const obj = [
+        {
+          id: 110,
+          msg: this.Search,
+          time: 12,
+          type: window.MESSAGE_TYPE.NORMAL,
+          barrageStyle: ColorArr[Math.ceil(Math.random() * ColorArr.length - 1)]
+        }
+      ]
+      this.$store.commit('GetBarrageList', obj)
+      this.Search = ''
     }
   }
 }

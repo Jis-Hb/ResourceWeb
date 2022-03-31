@@ -39,21 +39,35 @@ $html.onclick = function (e) {
   $text.style.fontSize = Math.random() * 10 + 8 + 'px'
   $elem.style.fontSize = Math.random() * 10 + 12
     + 'px'
+
   var increase = 0
-  var anim = setTimeout(function () {
-    anim = setInterval(function () {
-      if
-        (++increase == 150) {
-        clearInterval(anim)
-        $body.removeChild($elem)
-      } $text.style.top = y - 10 -
-        increase + 'px'
-      $text.style.opacity = (150 - increase) / 120
-      $elem.style.top = y - 20 - increase +
-        'px'
-      $elem.style.opacity = (150 - increase) / 120
-    }, 8)
-  }, 70)
+  let anim
+  new Promise((resolve, reject) => {
+    anim = setTimeout(function () {
+      anim = setInterval(function () {
+        if
+          (++increase == 150) {
+          clearInterval(anim)
+          $body.removeChild($elem)
+        } $text.style.top = y - 10 -
+          increase + 'px'
+        $text.style.opacity = (150 - increase) / 120
+        $elem.style.top = y - 20 - increase +
+          'px'
+        $elem.style.opacity = (150 - increase) / 120
+        resolve(anim)
+      }, 8)
+
+    }, 70)
+
+  }).then(() => {
+    setTimeout(() => {
+      clearInterval(anim)
+      $body.removeChild($text)
+      $body.removeChild($elem)
+    }, 1000);
+
+  })
   $body.appendChild($elem)
   $body.appendChild($text)
 }

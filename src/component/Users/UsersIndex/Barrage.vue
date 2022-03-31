@@ -24,12 +24,10 @@
 
 <script>
 import Vue from 'vue'
-import { vueBaberrage, MESSAGE_TYPE } from 'vue-baberrage'
-Vue.use(vueBaberrage)
+import { mapState } from 'vuex'
 import Search from './Search.vue'
 export default {
   name: 'Barrage',
-  components: { Search },
   data() {
     return {
       msg: '炸毛小焦~',
@@ -39,30 +37,14 @@ export default {
       barrageLoop: true,
       maxWordCount: 1,
       throttleGap: 3000,
-      barrageList: [],
       boxWidth: document.body.scrollWidth,
-      hoverLanePause: true
-    }
-  },
-  mounted() {
-    let that = this
-    window.onresize = () => {
-      return (() => {
-        that.boxWidth = document.body.scrollWidth
-        console.log(that.boxWidth)
-      })()
-    }
-
-    this.addToList()
-  },
-  methods: {
-    addToList() {
-      let list = [
+      hoverLanePause: true,
+      list: [
         {
           id: 1,
           avatar:
             'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064584167,3502823640&fm=26&gp=0.jpg',
-          msg: this.msg,
+          msg: '炸毛小焦',
           time: 3,
           barrageStyle: 'red'
         },
@@ -70,7 +52,7 @@ export default {
           id: 2,
           avatar:
             'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064584167,3502823640&fm=26&gp=0.jpg',
-          msg: this.msg,
+          msg: '炸毛小焦~',
           time: 8,
           barrageStyle: 'green'
         },
@@ -78,7 +60,7 @@ export default {
           id: 3,
           avatar:
             'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064584167,3502823640&fm=26&gp=0.jpg',
-          msg: this.msg,
+          msg: '炸毛小焦~',
           time: 10,
           barrageStyle: 'normal'
         },
@@ -86,7 +68,7 @@ export default {
           id: 4,
           avatar:
             'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064584167,3502823640&fm=26&gp=0.jpg',
-          msg: this.msg,
+          msg: '炸毛小焦~',
           time: 5,
           barrageStyle: 'blue'
         },
@@ -94,7 +76,7 @@ export default {
           id: 5,
           avatar:
             'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064584167,3502823640&fm=26&gp=0.jpg',
-          msg: this.msg,
+          msg: '炸毛小焦~',
           time: 6,
           barrageStyle: 'red'
         },
@@ -102,7 +84,7 @@ export default {
           id: 6,
           avatar:
             'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064584167,3502823640&fm=26&gp=0.jpg',
-          msg: this.msg,
+          msg: '炸毛小焦~',
           time: 12,
           barrageStyle: 'normal'
         },
@@ -110,7 +92,7 @@ export default {
           id: 7,
           avatar:
             'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064584167,3502823640&fm=26&gp=0.jpg',
-          msg: this.msg,
+          msg: '炸毛小焦~',
           time: 5,
           barrageStyle: 'red'
         },
@@ -128,7 +110,7 @@ export default {
           id: 9,
           avatar:
             'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064584167,3502823640&fm=26&gp=0.jpg',
-          msg: this.msg,
+          msg: '炸毛小焦~',
           time: 8,
           barrageStyle: 'red'
         },
@@ -136,22 +118,44 @@ export default {
           id: 10,
           avatar:
             'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064584167,3502823640&fm=26&gp=0.jpg',
-          msg: this.msg,
+          msg: '炸毛小焦~',
           time: 10,
           barrageStyle: 'MyColor'
         }
       ]
+    }
+  },
+  components: { Search },
+  computed: {
+    ...mapState({
+      barrageList: (state) => state.barrageList
+    })
+  },
+  mounted() {
+    this.addToList()
+    let that = this
+    window.onresize = () => {
+      return (() => {
+        that.boxWidth = document.body.scrollWidth
+        console.log(that.boxWidth)
+      })()
+    }
+  },
+  methods: {
+    addToList() {
       const ColorArr = ['Dd4357d', 'D8a8ba1', 'Decb332', 'D27b8bf', 'Dcba5dd', 'Dfb7f8f', 'Df1dae5']
-      list.forEach((v, i) => {
-        this.barrageList.push({
+      let listS = []
+      this.list.forEach((v, i) => {
+        listS.push({
           id: v.id,
           avatar: v.avatar,
           msg: v.msg,
           time: 4 + i,
-          type: MESSAGE_TYPE.NORMAL,
+          type: window.MESSAGE_TYPE.NORMAL,
           barrageStyle: ColorArr[Math.ceil(Math.random() * ColorArr.length - 1)]
         })
       })
+      this.$store.commit('GetBarrageList', listS)
     }
   }
 }
@@ -165,6 +169,7 @@ export default {
   height: 600px;
   background-color: #fcfcff;
   .Search {
+    z-index: 99999;
     max-width: 1200px;
     margin: 0 auto;
   }

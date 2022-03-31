@@ -3,13 +3,24 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+function createStore() {
+  return new Vuex.Store({
+    state: {
+      barrageList: []
+    },
+    mutations: {
+      GetBarrageList(state, payload) {
+        payload.forEach((item, index) => {
+          state.barrageList.push({ ...item })
+        })
+      }
+    },
+    actions: {
+    },
+    modules: {
+    }
+  })
+}
+const store = createStore();
+
+export default store
