@@ -32,11 +32,11 @@ export default {
     return {
       msg: '炸毛小焦~',
       barrageIsShow: true,
-      messageHeight: 3,
-      boxHeight: 800,
+      messageHeight: 20,
+      boxHeight: 650,
       barrageLoop: true,
-      maxWordCount: 1,
-      throttleGap: 3000,
+      maxWordCount: 20,
+      throttleGap: 1000,
       boxWidth: document.body.scrollWidth,
       hoverLanePause: true,
       list: [
@@ -169,7 +169,7 @@ export default {
   height: 600px;
   background-color: #fcfcff;
   .Search {
-    z-index: 99999;
+    z-index: 8;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -222,7 +222,7 @@ export default {
 .vue-baberrage {
   position: relative;
   top: 0;
-  z-index: 999;
+  z-index: 2;
   height: 100%;
   width: 100%;
   margin: 0 0 0 0;

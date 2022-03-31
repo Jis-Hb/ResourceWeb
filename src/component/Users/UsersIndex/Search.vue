@@ -98,12 +98,22 @@ export default {
   border-radius: 0 10px 10px 0;
   color: #363636;
   font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.326);
+}
+/deep/ .el-input-group {
+  transition: all 0.5s;
+  box-shadow: 0 0px 20px #d4d4df;
+  border-radius: 10px;
+  overflow: hidden;
+}
+/deep/ .el-input-group:hover {
+  box-shadow: 0 1px 40px #b7b7ba;
 }
 /deep/ .el-input-group__prepend {
   border-radius: 10px 0 0 10px;
   border-color: #f4f4ff;
   color: #363636;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.326);
 }
 /deep/ .el-input__icon {
   font-size: 16px;
