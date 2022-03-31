@@ -44,6 +44,7 @@ export default {
     return {
       TabIndex: 0,
       TitleIndex: 0,
+
       LeftTab: [
         {
           Tab: 'Latest'

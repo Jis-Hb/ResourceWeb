@@ -9,7 +9,7 @@
           <span class="UserName">UserName</span>
         </div>
       </el-col>
-      <el-col :span="15">
+      <el-col :span="15" class="hidden-xs-only">
         <div class="HeaderBox Header-Center">
           <span
             :class="TitleFlag == index ? 'NavTitleS' : 'NavTitle'"
@@ -21,10 +21,10 @@
           </span>
         </div>
       </el-col>
-      <el-col :span="5">
+      <el-col :span="5" class="hidden-sm-and-down">
         <div class="HeaderBox Header-Right">
           <div @click="Login" class="MyButton BtnLogin">登入</div>
-          <div class="MyButton BtnRegister">注册</div>
+          <div @click="Registered" class="MyButton BtnRegister">注册</div>
         </div>
       </el-col>
     </el-row>
@@ -61,6 +61,10 @@ export default {
     },
     Login() {
       this.$router.push('/Login')
+      this.TitleFlag = null
+    },
+    Registered() {
+      this.$router.push('/Registered')
       this.TitleFlag = null
     }
   }

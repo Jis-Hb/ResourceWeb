@@ -26,6 +26,11 @@ const routes = [
         path: '/Login',
         name: '用户登录',
         component: () => import('@/pages/Users/Login.vue')
+      },
+      {
+        path: '/Registered',
+        name: '用户注册',
+        component: () => import('@/pages/Users/Registered.vue')
       }
     ]
   }
